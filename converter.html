@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Quote Box</a>
+            <a href="converter.html">Hero Converter</a>
+            <a href="numbers.html">Number Operations</a>
+            <a href="magic.html">Magic Text Editor</a>
+        </nav>
+    </header>
+    <section>
+        <h2>1.2 Hero Converter</h2>
+        <input type="number" id="value" placeholder="Enter value">
+        <select id="unit">
+            <option value="kg-to-lb">Kilograms to Pounds</option>
+            <option value="lb-to-kg">Pounds to Kilograms</option>
+        </select>
+        <button onclick="convert()">Convert</button>
+        <p id="result"></p>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
