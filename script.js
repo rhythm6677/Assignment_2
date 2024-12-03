@@ -21,11 +21,27 @@ function changeQuoteStyle(color) {
     quoteBox.style.borderColor = color;
 
 
+
     if (color === "yellow") {
         quoteBox.style.color = "black"; 
-    } else {
+        quoteBox.style.borderColor = "red";}
+        
+    if (color === "green") {
         quoteBox.style.color = "white"; 
-    }
+        quoteBox.style.borderColor = "yellow";}
+
+    if (color === "red") {
+        quoteBox.style.color = "white"; 
+        quoteBox.style.borderColor = "black";}
+
+    if (color === "blue") {
+        quoteBox.style.color = "white"; 
+        quoteBox.style.borderColor = "red";}
+    if (color === "purple") {
+        quoteBox.style.color = "white"; 
+        quoteBox.style.borderColor = "green";}
+
+
 }
 
 
@@ -48,22 +64,51 @@ function convert() {
 }
 
 // Number Operations
-function calculate() {
-    const numbers = document.getElementById("numbers").value.split(",").map(Number);
-    const max = Math.max(...numbers);
-    const min = Math.min(...numbers);
-    const sum = numbers.reduce((a, b) => a + b, 0);
-    const average = sum / numbers.length;
-    const reverse = numbers.reverse().join(", ");
+// Function to process numbers after a comma
+function processNumbers() {
+    const input = document.getElementById("numberInput").value;
 
-    document.getElementById("output").innerHTML = `
-        Max: ${max} <br>
-        Min: ${min} <br>
-        Sum: ${sum} <br>
-        Average: ${average.toFixed(2)} <br>
-        Reverse Order: ${reverse}
-    `;
+    // Split the input by commas
+    const rawNumbers = input.split(",");
+
+    // Filter valid numbers: only pure numeric values (no alphabets or symbols)
+    const validNumbers = rawNumbers
+        .slice(0, -1) // Exclude the last incomplete entry (if not followed by a comma)
+        .map((num) => num.trim()) // Trim whitespace
+        .filter((num) => /^[0-9]+$/.test(num)) // Check for strictly numeric values
+        .map(Number); // Convert to numbers
+
+    // Perform operations if there are valid numbers
+    if (validNumbers.length > 0) {
+        const max = Math.max(...validNumbers);
+        const min = Math.min(...validNumbers);
+        const sum = validNumbers.reduce((acc, num) => acc + num, 0);
+        const avg = sum / validNumbers.length;
+        const reversed = [...validNumbers].reverse().join(", ");
+
+        // Update the results in the HTML
+        document.getElementById("max").textContent = `Max: ${max}`;
+        document.getElementById("min").textContent = `Min: ${min}`;
+        document.getElementById("sum").textContent = `Sum: ${sum}`;
+        document.getElementById("average").textContent = `Average: ${avg}`;
+        document.getElementById("reverse").textContent = `Reverse Order: ${reversed}`;
+    } else {
+        // Clear the results if no valid numbers are found
+        document.getElementById("max").textContent = "Max: N/A";
+        document.getElementById("min").textContent = "Min: N/A";
+        document.getElementById("sum").textContent = "Sum: N/A";
+        document.getElementById("average").textContent = "Average: N/A";
+        document.getElementById("reverse").textContent = "Reverse Order: N/A";
+    }
 }
+
+// Add event listener to the input field
+window.onload = function () {
+    document.getElementById("numberInput").addEventListener("input", processNumbers);
+};
+
+
+
 
 // Magic Text Editor
 function getTextAreaValue() {
