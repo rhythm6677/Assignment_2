@@ -10,13 +10,26 @@ function getRandomQuote() {
     return quotes[Math.floor(Math.random() * quotes.length)];
 }
 
+
+
 function changeQuoteStyle(color) {
     const quoteBox = document.getElementById("quote-box");
     quoteBox.textContent = getRandomQuote();
-    quoteBox.style.color = color;
+
+  
+    quoteBox.style.backgroundColor = color;
     quoteBox.style.borderColor = color;
-    quoteBox.style.backgroundColor = `${color}30`; // Light color (e.g., red -> light red)
+
+
+    if (color === "yellow") {
+        quoteBox.style.color = "black"; 
+    } else {
+        quoteBox.style.color = "white"; 
+    }
 }
+
+
+
 
 
 // Hero Converter
