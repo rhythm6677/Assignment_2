@@ -166,3 +166,7 @@ button:focus {
     margin: 5px 0;
     font-weight: bold;
 }
+
+#inputText, #outputText {
+    white-space: pre-wrap; 
+}

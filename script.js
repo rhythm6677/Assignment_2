@@ -24,22 +24,33 @@ function changeQuoteStyle(color) {
 
     if (color === "yellow") {
         quoteBox.style.color = "black"; 
-        quoteBox.style.borderColor = "red";}
+        quoteBox.style.borderColor = "red";
+        quoteBox.style.fontSize = "20px"
+        quoteBox.style.fontFamily = "Consolas";
+    }
         
     if (color === "green") {
         quoteBox.style.color = "white"; 
-        quoteBox.style.borderColor = "yellow";}
+        quoteBox.style.borderColor = "yellow";
+        quoteBox.style.fontSize = "18px";
+        quoteBox.style.fontFamily = "arial";}
 
     if (color === "red") {
         quoteBox.style.color = "white"; 
-        quoteBox.style.borderColor = "black";}
+        quoteBox.style.borderColor = "black";
+        quoteBox.style.fontSize = "16px";
+        quoteBox.style.fontFamily = "Menlo";}
 
     if (color === "blue") {
         quoteBox.style.color = "white"; 
-        quoteBox.style.borderColor = "red";}
+        quoteBox.style.borderColor = "red";
+        quoteBox.style.fontSize = "19px";
+        quoteBox.style.fontFamily = "Inconsolata";}
     if (color === "purple") {
         quoteBox.style.color = "white"; 
-        quoteBox.style.borderColor = "green";}
+        quoteBox.style.borderColor = "green";
+        quoteBox.style.fontSize = "21px";
+        quoteBox.style.fontFamily = "Menlo";}
 
 
 }
@@ -102,6 +113,7 @@ function processNumbers() {
     }
 }
 
+
 // Add event listener to the input field
 window.onload = function () {
     document.getElementById("numberInput").addEventListener("input", processNumbers);
@@ -110,9 +122,10 @@ window.onload = function () {
 
 
 
+
 // Magic Text Editor
 function getTextAreaValue() {
-    return document.getElementById("text-area").value.trim();
+    return document.getElementById("text-area").value;
 }
 
 function setTextAreaValue(value) {
@@ -120,7 +133,7 @@ function setTextAreaValue(value) {
 }
 
 function clearAll() {
-    setTextAreaValue("");
+    setTextAreaValue('');
 }
 
 let isUpperCase = false;
@@ -133,6 +146,7 @@ function toggleCase() {
 
 function sortLines() {
     let lines = getTextAreaValue().split("\n");
+    lines = lines.filter(line => line.trim() !== "");  // Preserve empty lines intact
     lines = lines.sort();
     setTextAreaValue(lines.join("\n"));
 }
@@ -145,7 +159,7 @@ function reverseLines() {
 
 function stripBlank() {
     let lines = getTextAreaValue().split("\n");
-    lines = lines.map(line => line.trim()).filter(line => line !== "");
+    lines = lines.filter(line => line.trim() !== ""); // Remove empty lines but keep spaces within lines
     setTextAreaValue(lines.join("\n"));
 }
 
